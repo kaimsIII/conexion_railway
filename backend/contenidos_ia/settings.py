@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-u=+#@wc+m9zd@0c(k74pr-m9m0etkk&x5kih^-kkm9(a(847vg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', 'conexionrailway-production.up.railway.app']
+ALLOWED_HOSTS = [
+    'conexionrailway-production.up.railway.app',
+    'localhost',  # Para pruebas locales, si es necesario
+    '127.0.0.1',  # Para pruebas locales, si es necesario
+]
 
 AUTH_USER_MODEL = 'login_app.CustomUser'
 
@@ -176,7 +180,7 @@ AUTHENTICATION_BACKENDS = (
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Se define que la sesión expira en 30 minutos
-SESSION_COOKIE_AGE = 1800
+SESSION_COOKIE_AGE = 3600
 SESSION_SAVE_EVERY_REQUEST = True # Se guarda la sesión en cada request
 
 
@@ -215,3 +219,11 @@ SWAGGER_SETTINGS = {
         }
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://conexionrailway-production.up.railway.app',
+]
+
+SESSION_COOKIE_SECURE = True  # Usa True en producción con HTTPS
+CSRF_COOKIE_SECURE = True    # Usa True en producción con HTTPS
+CSRF_COOKIE_SAMESITE = 'Lax' # O 'Strict', dependiendo de tus necesidades
