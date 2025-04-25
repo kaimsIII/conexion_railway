@@ -1,1 +1,1 @@
-web: gunicorn contenidos_ia.wsgi
+web: gunicorn contenidos_ia.wsgi:application --bind 0.0.0.0:$PORT
